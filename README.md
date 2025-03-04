@@ -22,3 +22,5 @@ The library comes with a simple Swagger front-end. If you want to test it locall
 
 ![image](https://github.com/user-attachments/assets/a2f55159-df4b-4424-a1ad-7ea2541bd3a2)
 
+#### JSONs for testing various API calls can be found in the wiki for this project.
+
