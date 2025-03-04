@@ -241,24 +241,24 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ScimLibrary.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ScimAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ScimLibrary.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ScimAPI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ScimLibrary.props",
-      "PackagePath": "build\\ScimLibrary.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ScimAPI.props",
+      "PackagePath": "build\\ScimAPI.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ScimLibrary.props",
-      "PackagePath": "buildMultiTargeting\\ScimLibrary.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ScimAPI.props",
+      "PackagePath": "buildMultiTargeting\\ScimAPI.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ScimLibrary.props",
-      "PackagePath": "buildTransitive\\ScimLibrary.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ScimAPI.props",
+      "PackagePath": "buildTransitive\\ScimAPI.props"
     }
   ],
   "ElementsToRemove": []

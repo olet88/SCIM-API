@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\otobi\\source\\repos\\Scim\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{448BB71B-1081-4B9D-9CB4-5E432A341651}|Solution Items{448BB71B-1081-4B9D-9CB4-5E432A341651}|C:\\Users\\otobi\\source\\repos\\Scim\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{448BB71B-1081-4B9D-9CB4-5E432A341651}|Solution Items{448BB71B-1081-4B9D-9CB4-5E432A341651}|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\demo\\inmemorydatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\demo\\inmemorydatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\repositories\\iscimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\repositories\\iscimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\utilities\\scimpatchoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\utilities\\scimpatchoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,36 +27,28 @@
       "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\scimapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|solutionrelative:scimlibrary\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\businessmodels\\scimuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\businessmodels\\scimuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|solutionrelative:scimlibrary\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\businessmodels\\scimgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\businessmodels\\scimgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\services\\scimuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|solutionrelative:scimlibrary\\services\\scimuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\repositories\\iscimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\repositories\\iscimrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\services\\scimgroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|solutionrelative:scimlibrary\\services\\scimgroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\services\\scimgroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\services\\scimgroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\businessmodels\\scimuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|solutionrelative:scimlibrary\\businessmodels\\scimuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\businessmodels\\scimgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|solutionrelative:scimlibrary\\businessmodels\\scimgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimLibrary.csproj|solutionrelative:scimlibrary\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|c:\\users\\otobi\\source\\repos\\scim\\scimlibrary\\services\\scimuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386637DC-3340-4043-A311-A7F33FC7B3BA}|ScimLibrary\\ScimAPI.csproj|solutionrelative:scimlibrary\\services\\scimuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 183,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +66,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\otobi\\source\\repos\\Scim\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-04T14:19:02.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InMemoryDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Demo\\InMemoryDatabase.cs",
+              "RelativeDocumentMoniker": "ScimLibrary\\Demo\\InMemoryDatabase.cs",
+              "ToolTip": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Demo\\InMemoryDatabase.cs",
+              "RelativeToolTip": "ScimLibrary\\Demo\\InMemoryDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T14:01:23.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "ScimAPI.csproj",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\ScimAPI.csproj",
               "RelativeDocumentMoniker": "ScimLibrary\\ScimAPI.csproj",
@@ -66,12 +100,11 @@
               "RelativeToolTip": "ScimLibrary\\ScimAPI.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-04T13:50:18.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-04T13:50:18.436Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "ScimUser.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\BusinessModels\\ScimUser.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\BusinessModels\\ScimUser.cs",
@@ -79,38 +112,37 @@
               "RelativeToolTip": "ScimLibrary\\BusinessModels\\ScimUser.cs",
               "ViewState": "AgIAABkAAAAAAAAAAIA1wCEAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T08:49:34.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-03T08:49:34.82Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "ScimPatchOperation.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Utilities\\ScimPatchOperation.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\Utilities\\ScimPatchOperation.cs",
               "ToolTip": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Utilities\\ScimPatchOperation.cs",
               "RelativeToolTip": "ScimLibrary\\Utilities\\ScimPatchOperation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T21:26:42.66Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Program.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\Program.cs",
               "ToolTip": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Program.cs",
               "RelativeToolTip": "ScimLibrary\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAuwBcAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T19:48:54.406Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "ScimGroup.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\BusinessModels\\ScimGroup.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\BusinessModels\\ScimGroup.cs",
@@ -118,12 +150,11 @@
               "RelativeToolTip": "ScimLibrary\\BusinessModels\\ScimGroup.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAA1wAwAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T19:11:55.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T19:11:55.763Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "GroupController.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Controllers\\GroupController.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\Controllers\\GroupController.cs",
@@ -131,12 +162,11 @@
               "RelativeToolTip": "ScimLibrary\\Controllers\\GroupController.cs",
               "ViewState": "AgIAAFAAAAAAAAAAAAAmwGIAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T16:36:00.074Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T16:36:00.074Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\Controllers\\UserController.cs",
@@ -149,20 +179,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "IScimRepository.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Repositories\\IScimRepository.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\Repositories\\IScimRepository.cs",
               "ToolTip": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Repositories\\IScimRepository.cs",
               "RelativeToolTip": "ScimLibrary\\Repositories\\IScimRepository.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAgwEoAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T16:23:46.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "ScimGroupService.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Services\\ScimGroupService.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\Services\\ScimGroupService.cs",
@@ -170,8 +200,7 @@
               "RelativeToolTip": "ScimLibrary\\Services\\ScimGroupService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T16:22:09.666Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T16:22:09.666Z"
             }
           ]
         }
@@ -196,7 +225,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "ScimUserService.cs",
               "DocumentMoniker": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Services\\ScimUserService.cs",
               "RelativeDocumentMoniker": "ScimLibrary\\Services\\ScimUserService.cs",

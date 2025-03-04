@@ -56,7 +56,7 @@
       },
       {
         "Name": "operations",
-        "Type": "ScimLibrary.ScimPatchOperation",
+        "Type": "ScimAPI.Utilities.ScimPatchOperation",
         "IsRequired": true
       }
     ],
@@ -204,7 +204,7 @@
       },
       {
         "Name": "operations",
-        "Type": "ScimLibrary.ScimPatchOperation",
+        "Type": "ScimAPI.Utilities.ScimPatchOperation",
         "IsRequired": true
       }
     ],
