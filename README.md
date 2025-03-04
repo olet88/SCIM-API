@@ -11,3 +11,14 @@ an open protocol, **it is not a framework or a plugin** in it's own right.
 ## Who uses SCIM?
 
 SCIM is used by Azure Entra ID, Slack, Dropbox, Octa and many others. This library is tuned for Entra ID, but with a few, very simple modifications, it should work just fine on any service using SCIM V2 for user provisioning. This library is also designed to work without Graph API or similar third party tools to avoid tight-coupling to the extent that's possible.
+
+## Architecture
+
+The library is a standard MVC pattern using a 3-tier layout. It employs services and a repository at the bottom. Domain models are handled directly from the service. While a repository isn't strictly necessary when using a document database, it will ensure that the library is not tight-coupled to any database system, but that it can work with anything. A good and free alternative is MongoDB.
+
+## Testing it locally
+
+The library comes with a simple Swagger front-end. If you want to test it locally, you can also download NGrok. This will allow you to create a tunnel to your local service that Entra ID can use. [The documentation for this is fairly straightforward.](https://ngrok.com/docs/getting-started/)
+
+![image](https://github.com/user-attachments/assets/a2f55159-df4b-4424-a1ad-7ea2541bd3a2)
+
