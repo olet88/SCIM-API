@@ -10,4 +10,4 @@ an open protocol, **it is not a framework or a plugin** in it's own right.
 
 ## Who uses SCIM?
 
-SCIM is used by Azure Entra ID, Slack, Dropbox, Octa and many others. This library is tuned for Entra ID, but with a few, very simple modifications, it should work just fine on any service using SCIM V2 for user provisioning. 
+SCIM is used by Azure Entra ID, Slack, Dropbox, Octa and many others. This library is tuned for Entra ID, but with a few, very simple modifications, it should work just fine on any service using SCIM V2 for user provisioning. This library is also designed to work without Graph API or similar third party tools to avoid tight-coupling to the extent that's possible.
