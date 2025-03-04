@@ -2,7 +2,7 @@
 using ScimLibrary.Models;
 using System.Collections.Concurrent;
 
-namespace ScimLibrary
+namespace ScimAPI.Repository
 {
     public interface IScimRepository<T> where T : class
     {

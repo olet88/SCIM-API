@@ -1,9 +1,9 @@
 using Microsoft.OpenApi.Models;
 using ScimLibrary.Models;
 using ScimLibrary.Services;
-using ScimLibrary;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using ScimLibrary.Factories; // Corrected namespace
+using ScimLibrary.Factories;
+using ScimAPI.Repository; // Corrected namespace
 
 var builder = WebApplication.CreateBuilder(args);
 

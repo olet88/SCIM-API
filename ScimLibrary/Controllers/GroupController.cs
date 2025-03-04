@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ScimAPI.Utilities;
 using ScimLibrary.Factories;
 using ScimLibrary.Models;
 using ScimLibrary.Services;

@@ -3,6 +3,8 @@ using System.Reflection;
 using ScimLibrary.BusinessModels;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
+using ScimAPI.Repository;
+using ScimAPI.Utilities;
 
 namespace ScimLibrary.Services
 {
