@@ -484,9 +484,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\ScimLibrary.csproj",
-      "projectName": "ScimLibrary",
-      "projectPath": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\ScimLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\ScimAPI.csproj",
+      "projectName": "ScimAPI",
+      "projectPath": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\ScimAPI.csproj",
       "packagesPath": "C:\\Users\\otobi\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\obj\\",
       "projectStyle": "PackageReference",

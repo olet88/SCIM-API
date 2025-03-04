@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using ScimAPI.Repository;
+using ScimAPI.Utilities;
 using ScimLibrary.BusinessModels;
 using ScimLibrary.Models;
 using System.Reflection;

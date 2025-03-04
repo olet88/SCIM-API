@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Nodes;
 
-namespace ScimLibrary
+namespace ScimAPI.Utilities
 {
     public class ScimPatchOperation
     {
@@ -12,6 +12,6 @@ namespace ScimLibrary
     {
         public required string Op { get; set; }
         public required string Path { get; set; }
-        public required object Value { get; set; } 
+        public required object Value { get; set; }
     }
 }
