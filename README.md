@@ -22,5 +22,7 @@ The library comes with a simple Swagger front-end. If you want to test it locall
 
 ![image](https://github.com/user-attachments/assets/a2f55159-df4b-4424-a1ad-7ea2541bd3a2)
 
+Entra ID by default uses the following verbs: **GET**, **POST** and **PATCH**. **DELETE** and **PUT** are not used; deleted or deactivated users and groups are handled using an "Active" flag instead. A delete endpoint is included in this API to allow you to hard delete an entry from a custom front-end, Swagger or Postman.
+
 #### JSONs for testing various API calls can be found in the wiki for this project.
 
