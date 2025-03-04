@@ -1,7 +1,7 @@
 # SCIMClient
 An open-source implementation of a SCIM V2 client that is fully compatible with Entra ID. This library works with both users and groups. A Swagger front-end and a very simple demo repository class is included. It also works with the standard enterprise extensions in Entra ID. No authorization for the endpoints is included, and **you need to manually add this to use the library in production**. The reason for not simply including this, is that there are different ways to do this and that I hope to avoid major compatibility issues. For a detailed description of how the app works, **see the wiki**.
 
-This software is 100%free without ifs or buts under the MIT license. [If you like it, feel free to buy me a coffee.](buymeacoffee.com/Tobiesen)
+This software is 100% free without ifs or buts under the MIT license. [If you like it, feel free to buy me a coffee.](buymeacoffee.com/Tobiesen)
 
 ## What is SCIM?
 
