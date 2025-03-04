@@ -24,7 +24,7 @@ namespace ScimLibrary.Services
 
         public void DeleteGroup(ScimGroup group)
         {
-            repository.HardDeleteAsync(group.ExternalId);
+            repository.DeleteAsync(group.ExternalId);
         }
 
         public async Task<ScimGroup> GetGroupById(string externalId)
@@ -88,11 +88,6 @@ namespace ScimLibrary.Services
 
             await repository.UpdateAsync(group);
             return true;
-        }
-
-        public void UpdateGroup(ScimGroup group)
-        {
-            repository.UpdateAsync(group);
         }
     }
 }

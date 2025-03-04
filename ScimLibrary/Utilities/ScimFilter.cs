@@ -19,7 +19,7 @@ public class ScimFilter
         {
             PropertyName = parts[0].Trim(),
             Operator = "eq",
-            Value = parts[1].Trim().Trim('"') // Removing potential double quotes
+            Value = parts[1].Trim().Trim('"')
         };
     }
 
@@ -28,7 +28,6 @@ public class ScimFilter
         var param = Expression.Parameter(typeof(T), "x");
         var property = Expression.Property(param, PropertyName);
 
-        // Convert value to the property type
         var propertyType = ((PropertyInfo)property.Member).PropertyType;
         var typedValue = Convert.ChangeType(Value, propertyType);
         var constant = Expression.Constant(typedValue);

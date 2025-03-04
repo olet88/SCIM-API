@@ -25,7 +25,7 @@ namespace ScimLibrary.Services
 
         public void DeleteUser(ScimUser user)
         {
-            repository.HardDeleteAsync(user.ExternalId);
+            repository.DeleteAsync(user.ExternalId);
         }
 
         public async Task<ScimUser> GetUserById(string externalId)

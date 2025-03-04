@@ -11,8 +11,7 @@ namespace ScimAPI.Repository
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task ReplaceAsync(T entity);
-        Task SoftDeleteAsync(string id);
-        Task HardDeleteAsync(string id);
+        Task DeleteAsync(string id);
     }
 
 }

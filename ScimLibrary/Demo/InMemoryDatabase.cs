@@ -33,7 +33,7 @@ namespace ScimAPI.Demo
             return Task.FromResult(InMemoryUserDatabase[id]);
         }
 
-        public Task HardDeleteAsync(string id)
+        public Task DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }
@@ -90,7 +90,7 @@ namespace ScimAPI.Demo
             return Task.FromResult(InMemoryGroupDatabase[id]);
         }
 
-        Task IScimRepository<ScimGroup>.HardDeleteAsync(string id)
+        Task IScimRepository<ScimGroup>.DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }

@@ -95,43 +95,6 @@ namespace ScimLibrary.Controllers
             return updated ? NoContent() : NotFound();
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateGroup(string id, [FromBody] ScimGroup group)
-        {
-            if (string.IsNullOrEmpty(id) || group == null)
-            {
-                return BadRequest("Invalid user data.");
-            }
-
-            if (id != group.Id)
-            {
-                return BadRequest("User ID mismatch.");
-            }
-
-            try
-            {
-                scimGroupService.UpdateGroup(group);
-                return NoContent();
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound(new { Message = "User not found." });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { Message = "Invalid user data.", Details = ex.Message });
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Conflict(new { Message = "User update conflict.", Details = ex.Message });
-            }
-            catch (ApplicationException ex)
-            {
-                logger?.LogError(ex, "Error updating user with ID {UserId}", id);
-                return StatusCode(500, new { Message = "An unexpected error occurred while updating the user." });
-            }
-        }
-
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGroup(string id)
         {
