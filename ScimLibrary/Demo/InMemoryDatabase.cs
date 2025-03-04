@@ -108,10 +108,6 @@ namespace ScimAPI.Demo
             }
         }
 
-        Task IScimRepository<ScimGroup>.SoftDeleteAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
 
         Task IScimRepository<ScimGroup>.UpdateAsync(ScimGroup entity)
         {
