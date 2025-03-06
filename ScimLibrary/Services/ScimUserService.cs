@@ -49,7 +49,8 @@ namespace ScimLibrary.Services
 
         async Task ParseComplexPath(string path, string value2, ScimUser user)
         {
-            string pattern = @"(\w+)\[(\w+)\s*(\S+)\s*""([^""]+)""\]";
+            string pattern = @"(\w+)\[(\w+)\s*(\S+)\s*""([^""]+)""\](?:\.(\w+))?";
+            string toUpperCase = @"(?:^|[_\s-])([a-z])";
 
             Match match = Regex.Match(path, pattern);
             if (match.Success)
@@ -58,6 +59,11 @@ namespace ScimLibrary.Services
                 string field = match.Groups[2].Value;
                 string operatorType = match.Groups[3].Value;
                 string value = match.Groups[4].Value;
+                string fieldToUpdate = match.Groups[5].Value;
+
+                field = Regex.Replace(field, @"(?:^|[_\s-])([a-z])", match => match.Groups[1].Value.ToUpper());
+                fieldToUpdate = Regex.Replace(fieldToUpdate, @"(?:^|[_\s-])([a-z])", match => match.Groups[1].Value.ToUpper());
+
 
                 var property = typeof(ScimUser).GetProperty(array, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
@@ -66,16 +72,29 @@ namespace ScimLibrary.Services
                     var collection = property.GetValue(user) as IList; // Get the list property
                     if (collection != null)
                     {
-                        Type itemType = property.PropertyType.GetGenericArguments()[0]; // Get the type of list items
-                        object newItem = Activator.CreateInstance(itemType); // Create a new instance of list item type
+                        Type itemType = property.PropertyType.GetGenericArguments()[0]; 
+                        PropertyInfo typeProp = itemType.GetProperty(field); // convert these to pascal case
+                        PropertyInfo valueProp = itemType.GetProperty(fieldToUpdate);
 
-                        PropertyInfo typeProp = itemType.GetProperty("Type");
-                        PropertyInfo valueProp = itemType.GetProperty("Value");
+                        bool exists = collection.Cast<object>().Any(item => typeProp.GetValue(item)?.Equals(value) == true);
+                        object patchedItem;
 
-                        if (typeProp != null) typeProp.SetValue(newItem, value); // Set "type" field
-                        if (valueProp != null) valueProp.SetValue(newItem, value2); // Set "value" field
+                        object newItem = Activator.CreateInstance(itemType);
 
-                        collection.Add(newItem); // Add to the list
+                        if (!exists)
+                        {
+                            patchedItem = newItem;
+                        } else
+                        {
+                            patchedItem = collection.Cast<object>().Where(item => typeProp.GetValue(item)?.Equals(value) == true).FirstOrDefault();
+                        }
+
+                        if (typeProp != null) typeProp.SetValue(patchedItem, value); // Set "type" field
+                        if (valueProp != null) 
+                            valueProp.SetValue(patchedItem, value2); // Set "value" field
+
+                        if (!exists)
+                            collection.Add(patchedItem); // Add to the list
                     }
                 }
 

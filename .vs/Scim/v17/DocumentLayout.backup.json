@@ -191,7 +191,7 @@
               "RelativeDocumentMoniker": "ScimLibrary\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Controllers\\UserController.cs",
               "RelativeToolTip": "ScimLibrary\\Controllers\\UserController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAswFoAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAACsAAAAAAAAAAAAUwEAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T16:23:46.428Z",
               "EditorCaption": ""
@@ -232,8 +232,8 @@
       "FloatingWindowState": {
         "Id": "93bb9705-d28e-4d0f-aaa2-e84945911a92",
         "Display": 0,
-        "X": 1892,
-        "Y": 290,
+        "X": 1476,
+        "Y": 182,
         "Width": 1539,
         "Height": 989,
         "WindowState": 0
@@ -251,7 +251,7 @@
               "RelativeDocumentMoniker": "ScimLibrary\\Services\\ScimUserService.cs",
               "ToolTip": "C:\\Users\\otobi\\source\\repos\\Scim\\ScimLibrary\\Services\\ScimUserService.cs",
               "RelativeToolTip": "ScimLibrary\\Services\\ScimUserService.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAWwFEAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAD4v0AAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T16:22:11.513Z",
               "EditorCaption": ""
