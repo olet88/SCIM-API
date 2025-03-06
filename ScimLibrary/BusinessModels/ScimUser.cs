@@ -26,17 +26,23 @@ namespace ScimLibrary.Models
         public Name? Name { get; set; }
         public string? DisplayName { get; set; }
         public string? Title { get; set; }
-        public List<Email>? Emails { get; set; }
-        public List<Address>? Addresses { get; set; }
-        public List<PhoneNumber>? PhoneNumbers { get; set; }
+        public List<Email>? Emails { get; set; } = new List<Email>();
+        public List<Address>? Addresses { get; set; } = new List<Address>();
+        public List<PhoneNumber>? PhoneNumbers { get; set; } = new List<PhoneNumber>();
         [JsonProperty("urn:ietf:params:scim:schemas:extension:enterprise:2.0:User")]
         [JsonPropertyName("urn:ietf:params:scim:schemas:extension:enterprise:2.0:User")]
-        public EnterpriseExtension? EnterpriseExtension {  get; set; } = new EnterpriseExtension();
+        public EnterpriseExtension? EnterpriseExtension { get; set; } = new EnterpriseExtension();
     }
 
-    public class EnterpriseExtension
+    public class ScimUserReference
+    {
+        public string? Value { get; set; }
+    }
+
+        public class EnterpriseExtension
     {
         public string? EmployeeNumber { get; set; }
-         public string? Department { get; set; }
+        public string? Department { get; set; }
+        public ScimUserReference Manager { get; set; } = new ScimUserReference();
     }
 }

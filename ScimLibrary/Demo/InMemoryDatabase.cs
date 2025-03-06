@@ -51,10 +51,6 @@ namespace ScimAPI.Demo
             }
         }
 
-        public Task SoftDeleteAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task UpdateAsync(ScimUser entity)
         {

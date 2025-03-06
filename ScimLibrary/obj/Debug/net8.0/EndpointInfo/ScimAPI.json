@@ -95,45 +95,6 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "Group"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ScimGroup"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ScimGroup"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ScimGroup"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
       "delete": {
         "tags": [
           "Group"
@@ -411,6 +372,9 @@
           "department": {
             "type": "string",
             "nullable": true
+          },
+          "manager": {
+            "$ref": "#/components/schemas/ScimUserReference"
           }
         },
         "additionalProperties": false
@@ -618,6 +582,16 @@
           },
           "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
             "$ref": "#/components/schemas/EnterpriseExtension"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ScimUserReference": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
