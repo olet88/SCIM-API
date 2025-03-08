@@ -35,7 +35,8 @@ namespace ScimAPI.Demo
 
         public Task DeleteUserAsync(string id)
         {
-            throw new NotImplementedException();
+            InMemoryUserDatabase.TryRemove(id, out _);
+            return Task.CompletedTask;
         }
 
         public Task ReplaceUserAsync(ScimUser entity)

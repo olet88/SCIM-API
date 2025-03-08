@@ -1,8 +1,10 @@
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 using ScimLibrary.Services;
 using ScimLibrary.Factories;
 using ScimAPI.Repository;
-using ScimAPI.Demo; 
+using ScimAPI.Demo;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,12 @@ builder.Services.AddScoped<ScimGroupService>();
 // Register the error factory
 builder.Services.AddScoped<IScimErrorFactory, ScimErrorFactory>();
 
+// Register the demo authentication scheme
+builder.Services.AddAuthentication("DemoScheme")
+    .AddScheme<AuthenticationSchemeOptions, DemoAuthHandler>("DemoScheme", null);
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,6 +52,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 // Enable Swagger in development mode
 if (app.Environment.IsDevelopment())
 {
@@ -54,8 +65,6 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = string.Empty; // Access via root URL (localhost:5000/)
     });
 }
-
-app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
