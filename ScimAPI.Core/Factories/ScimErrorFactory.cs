@@ -12,10 +12,6 @@ namespace ScimLibrary.Factories
 
     public class ScimErrorFactory : IScimErrorFactory
     {
-        public ScimErrorFactory()
-        {
-        }
-
         public ScimErrorResponse CreateUserNotFoundError(string id)
         {
             return new ScimErrorResponse
@@ -60,5 +56,4 @@ namespace ScimLibrary.Factories
             };
         }
     }
-
 }

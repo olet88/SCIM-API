@@ -1,13 +1,13 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 
-public class ScimFilter
+internal class ScimFilter
 {
-    public required string PropertyName { get; set; }
-    public required string Operator { get; set; }
-    public required string Value { get; set; }
+    internal required string PropertyName { get; set; }
+    internal required string Operator { get; set; }
+    internal required string Value { get; set; }
 
-    public static ScimFilter Parse(string filter)
+    internal static ScimFilter Parse(string filter)
     {
         var parts = filter.Split(new[] { " eq " }, StringSplitOptions.None);
         if (parts.Length != 2)
@@ -23,7 +23,7 @@ public class ScimFilter
         };
     }
 
-    public Func<T, bool> ToLambda<T>()
+    internal Func<T, bool> ToLambda<T>()
     {
         var param = Expression.Parameter(typeof(T), "x");
         var property = Expression.Property(param, PropertyName);

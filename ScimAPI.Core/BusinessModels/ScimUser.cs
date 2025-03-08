@@ -1,17 +1,12 @@
 ﻿using Newtonsoft.Json;
+using ScimAPI.BusinessModels;
 using ScimLibrary.BusinessModels;
-using System.Net;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
 
 namespace ScimLibrary.Models
 {
     public class ScimUser
     {
-        /// <summary>
-        /// The SCIM schema URIs that define the structure of this resource.
-        /// For a user, this is typically the core User schema.
-        /// </summary>
         public List<string> Schemas { get; set; } = new List<string>
         {
             "urn:ietf:params:scim:schemas:core:2.0:User",
@@ -19,7 +14,7 @@ namespace ScimLibrary.Models
         };
 
         public string? Id { get; set; }
-        public string? ExternalId { get; set; }
+        public required string ExternalId { get; set; }
         public string? PreferredLanguage { get; set; }
         public bool Active { get; set; }
         public string? UserName { get; set; }
@@ -34,15 +29,10 @@ namespace ScimLibrary.Models
         public EnterpriseExtension? EnterpriseExtension { get; set; } = new EnterpriseExtension();
     }
 
-    public class ScimUserReference
-    {
-        public string? Value { get; set; }
-    }
-
         public class EnterpriseExtension
     {
         public string? EmployeeNumber { get; set; }
         public string? Department { get; set; }
-        public ScimUserReference Manager { get; set; } = new ScimUserReference();
+        public Manager Manager { get; set; } = new Manager();
     }
 }

@@ -48,40 +48,35 @@ namespace ScimLibrary.Services
 
             foreach (var operation in patchOperations.Operations)
             {
-                if (string.Equals(operation.Op, "replace", StringComparison.OrdinalIgnoreCase) && operation.Path != null)
-                {
-                    var property = typeof(ScimGroup).GetProperty(operation.Path, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-                    if (property != null && property.CanWrite)
-                    {
-                        property.SetValue(group, Convert.ChangeType(operation.Value.ToString(), property.PropertyType));
-                    }
-                }
-                else if (string.Equals(operation.Op, "add", StringComparison.OrdinalIgnoreCase) && operation.Path != null)
-                {
-                    var property = typeof(ScimGroup).GetProperty(operation.Path, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-                    if (property != null && property.CanWrite)
-                    {
-                        var propertyType = property.PropertyType;
+                if (string.IsNullOrEmpty(operation.Path)) continue;
 
-                        if (propertyType == typeof(IEnumerable<ScimMember>))
+                var property = typeof(ScimGroup).GetProperty(
+                    operation.Path,
+                    BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance
+                );
+
+                if (property == null || !property.CanWrite) continue;
+
+                switch (operation.Op.ToLowerInvariant())
+                {
+                    case "replace":
+                    case "add":
+                        if (property.PropertyType == typeof(IEnumerable<ScimMember>))
                         {
                             var members = JsonConvert.DeserializeObject<List<ScimMember>>(operation.Value.ToString());
                             property.SetValue(group, members);
                         }
                         else
                         {
-                            var convertedValue = JsonConvert.DeserializeObject(operation.Value.ToString(), propertyType);
+                            var convertedValue = operation.Value.ToString();
+                            var toString2 = convertedValue.ToString();
                             property.SetValue(group, convertedValue);
                         }
-                    }
-                }
-                else if (string.Equals(operation.Op, "remove", StringComparison.OrdinalIgnoreCase) && operation.Path != null)
-                {
-                    var property = typeof(ScimGroup).GetProperty(operation.Path, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-                    if (property != null && property.CanWrite)
-                    {
+                        break;
+
+                    case "remove":
                         property.SetValue(group, null);
-                    }
+                        break;
                 }
             }
 

@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json;
-using ScimLibrary.BusinessModels;
-using System.Text.Json.Serialization;
-
-namespace ScimLibrary.Models
+﻿namespace ScimLibrary.Models
 {
     public class ScimGroup
     {

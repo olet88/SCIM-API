@@ -1,10 +1,8 @@
 using Microsoft.OpenApi.Models;
-using ScimLibrary.Models;
 using ScimLibrary.Services;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using ScimLibrary.Factories;
 using ScimAPI.Repository;
-using ScimAPI.Demo; // Corrected namespace
+using ScimAPI.Demo; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +12,9 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "My API",
-        Version = "v1",
-        Description = "An example API for Swagger integration"
+        Title = "SCIM API",
+        Version = "v0.9",
+        Description = "A bare-bones SCIM API"
     });
 });
 
@@ -24,12 +22,12 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IScimUserRepository, InMemoryDatabaseRepository>();
 builder.Services.AddScoped<IScimGroupRepository, InMemoryDatabaseRepository>();
 
-builder.Services.AddScoped<IScimErrorFactory, ScimErrorFactory>();
-
-
 // Register the service
 builder.Services.AddScoped<ScimUserService>();
 builder.Services.AddScoped<ScimGroupService>();
+
+// Register the error factory
+builder.Services.AddScoped<IScimErrorFactory, ScimErrorFactory>();
 
 var app = builder.Build();
 
@@ -52,7 +50,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "SCIM API v0.9");
         c.RoutePrefix = string.Empty; // Access via root URL (localhost:5000/)
     });
 }

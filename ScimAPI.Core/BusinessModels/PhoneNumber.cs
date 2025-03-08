@@ -1,8 +1,6 @@
-﻿using System.Text.Json.Serialization;
-
-namespace ScimLibrary.BusinessModels
+﻿namespace ScimLibrary.BusinessModels
 {
-    public class Email
+    public class PhoneNumber
     {
         public string? Value { get; set; }
         public string? Type { get; set; }
