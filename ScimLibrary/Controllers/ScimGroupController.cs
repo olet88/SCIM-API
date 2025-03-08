@@ -6,7 +6,6 @@ using ScimLibrary.Services;
 
 namespace ScimLibrary.Controllers
 {
-
     [ApiController]
     [Route("scim/v2/Groups")]
     public class ScimGroupController : ControllerBase

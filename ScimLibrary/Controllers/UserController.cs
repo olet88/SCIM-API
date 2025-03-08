@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using ScimAPI.Utilities;
 using ScimLibrary.Factories;
 using ScimLibrary.Models;

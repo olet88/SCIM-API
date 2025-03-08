@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace ScimLibrary.BusinessModels
+﻿namespace ScimLibrary.BusinessModels
 {
     public class GroupMember
     {
