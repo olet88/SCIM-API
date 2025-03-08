@@ -9,16 +9,16 @@ namespace ScimLibrary.Controllers
 
     [ApiController]
     [Route("scim/v2/Groups")]
-    public class GroupController : ControllerBase
+    public class ScimGroupController : ControllerBase
     {
         private readonly ScimGroupService scimGroupService;
-        private readonly ILogger<GroupController> logger;
+        private readonly ILogger<ScimGroupController> logger;
         IScimErrorFactory scimErrorFactory;
 
-        public GroupController(ScimGroupService scimGroupService, ILoggerFactory loggerFactory, IScimErrorFactory scimErrorFactory)
+        public ScimGroupController(ScimGroupService scimGroupService, ILoggerFactory loggerFactory, IScimErrorFactory scimErrorFactory)
         {
             this.scimGroupService = scimGroupService ?? throw new ArgumentNullException(nameof(scimGroupService));
-            logger = loggerFactory.CreateLogger<GroupController>();
+            logger = loggerFactory.CreateLogger<ScimGroupController>();
             this.scimErrorFactory = scimErrorFactory;
         }
 

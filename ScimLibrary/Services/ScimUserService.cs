@@ -7,6 +7,7 @@ using ScimAPI.Repository;
 using ScimAPI.Utilities;
 using System.Text.RegularExpressions;
 using System.Collections;
+using System.Globalization;
 
 namespace ScimLibrary.Services
 {
@@ -47,64 +48,8 @@ namespace ScimLibrary.Services
             return new ScimListResponse<ScimUser>() { Resources = matchedUsers };
         }
 
-        async Task ParseComplexPath(string path, string value2, ScimUser user)
+        async Task ParseEnterpriseExtension(PatchOperation operation, ScimUser user)
         {
-            string pattern = @"(\w+)\[(\w+)\s*(\S+)\s*""([^""]+)""\](?:\.(\w+))?";
-
-            Match match = Regex.Match(path, pattern);
-            if (match.Success)
-            {
-                string array = match.Groups[1].Value;
-                string field = match.Groups[2].Value;
-                string type = match.Groups[4].Value;
-                string fieldToUpdate = match.Groups[5].Value;
-
-                field = Regex.Replace(field, @"(?:^|[_\s-])([a-z])", match => match.Groups[1].Value.ToUpper());
-                fieldToUpdate = Regex.Replace(fieldToUpdate, @"(?:^|[_\s-])([a-z])", match => match.Groups[1].Value.ToUpper());
-
-                var property = typeof(ScimUser).GetProperty(array, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-
-                if (property != null)
-                {
-                    var collection = property.GetValue(user) as IList; // Get the list property
-                    if (collection != null)
-                    {
-                        Type itemType = property.PropertyType.GetGenericArguments()[0];
-                        PropertyInfo typeProp = itemType.GetProperty(field); // convert these to pascal case
-                        PropertyInfo valueProp = itemType.GetProperty(fieldToUpdate);
-
-                        bool exists = collection.Cast<object>().Any(item => typeProp.GetValue(item)?.Equals(type) == true);
-                        object patchedItem;
-
-                        object newItem = Activator.CreateInstance(itemType);
-
-                        if (!exists)
-                        {
-                            patchedItem = newItem;
-                        }
-                        else
-                        {
-                            patchedItem = collection.Cast<object>().Where(item => typeProp.GetValue(item)?.Equals(type) == true).FirstOrDefault();
-                        }
-
-                        if (typeProp != null) typeProp.SetValue(patchedItem, type);
-                        if (valueProp != null)
-                            valueProp.SetValue(patchedItem, value2);
-
-                        if (!exists)
-                            collection.Add(patchedItem);
-                    }
-                }
-
-                await repository.UpdateUserAsync(user);
-            }
-        }
-
-        public async Task<bool> PatchUserAsync(string userId, ScimPatchOperation patchOperations)
-        {
-            var user = await repository.GetUserByIdAsync(userId);
-            if (user == null) return false;
-
             // Special clause for enterprise extension. Using reflections on extensions with nested value, would
             // ironically lead to messier code than just hardcoding them.
 
@@ -112,28 +57,109 @@ namespace ScimLibrary.Services
             string departmentPropertyName = "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department";
             string managerPropertyName = "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager";
 
+            if ((operation.Op == "Replace" || operation.Op == "Add") && operation.Path != null)
+            {
+
+                if (string.Equals(operation.Path, employeeNumberPropertyName, StringComparison.OrdinalIgnoreCase))
+                {
+                    user.EnterpriseExtension.EmployeeNumber = operation.Value.ToString();
+                }
+
+                if (string.Equals(operation.Path, departmentPropertyName, StringComparison.OrdinalIgnoreCase))
+                {
+                    user.EnterpriseExtension.Department = operation.Value.ToString();
+                }
+
+                if (string.Equals(operation.Path, managerPropertyName, StringComparison.OrdinalIgnoreCase))
+                {
+                    user.EnterpriseExtension.Manager.Value = operation.Value.ToString();
+                }
+            }
+            else if (operation.Op == "Remove" && operation.Path != null)
+            {
+
+                if (string.Equals(operation.Path, employeeNumberPropertyName, StringComparison.OrdinalIgnoreCase))
+                {
+                    user.EnterpriseExtension.EmployeeNumber = null;
+                }
+
+                if (string.Equals(operation.Path, departmentPropertyName, StringComparison.OrdinalIgnoreCase))
+                {
+                    user.EnterpriseExtension.Department = null;
+                }
+
+                if (string.Equals(operation.Path, managerPropertyName, StringComparison.OrdinalIgnoreCase))
+                {
+                    user.EnterpriseExtension.Manager = null;
+                }
+            }
+        }
+
+        async Task ParseComplexPath(string path, string valueOfField, ScimUser user)
+        {
+            string pattern = @"(\w+)\[(\w+)\s*(\S+)\s*""([^""]+)""\](?:\.(\w+))?";
+            Match match = Regex.Match(path, pattern);
+
+            if (!match.Success) return;
+
+            string arrayName = match.Groups[1].Value;
+            string field = ToPascalCase(match.Groups[2].Value);
+            string type = match.Groups[4].Value;
+            string fieldToUpdate = ToPascalCase(match.Groups[5].Value);
+
+            var property = typeof(ScimUser).GetProperty(arrayName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+
+            if (property == null || !(property.GetValue(user) is IList collection)) return;
+
+            Type itemType = property.PropertyType.GetGenericArguments().FirstOrDefault();
+            if (itemType == null) return;
+
+            PropertyInfo typeProp = itemType.GetProperty(field);
+            PropertyInfo? valueProp = itemType.GetProperty(fieldToUpdate);
+
+            if (typeProp == null || valueProp == null) return;
+
+            object patchedItem = collection.Cast<object>().FirstOrDefault(item => typeProp.GetValue(item)?.Equals(type) == true) ?? Activator.CreateInstance(itemType);
+
+            typeProp.SetValue(patchedItem, type);
+            valueProp.SetValue(patchedItem, valueOfField);
+
+            if (!collection.Contains(patchedItem))
+            {
+                collection.Add(patchedItem);
+            }
+
+            await repository.UpdateUserAsync(user);
+        }
+
+        private static string ToPascalCase(string input)
+        {
+            return Regex.Replace(input, @"(?:^|[_\s-])([a-z])", match => match.Groups[1].Value.ToUpper(CultureInfo.InvariantCulture));
+        }
+
+        public async Task<bool> PatchUserAsync(string userId, ScimPatchOperation patchOperations)
+        {
+            var user = await repository.GetUserByIdAsync(userId);
+            if (user == null) return false;
 
             foreach (var operation in patchOperations.Operations)
             {
-                await ParseComplexPath(operation.Path, operation.Value.ToString(), user);
+                if (operation.Path.Contains("urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"))
+                {
+                    await ParseEnterpriseExtension(operation, user);
+                    return true;
+                }
+                else if (operation.Path.Contains("[type eq"))
+                {
+                }
+
                 var property = typeof(ScimUser).GetProperty(operation.Path, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
                 if ((operation.Op == "Replace" || operation.Op == "Add") && operation.Path != null)
                 {
-
-                    if (string.Equals(operation.Path, employeeNumberPropertyName, StringComparison.OrdinalIgnoreCase))
+                    if (operation.Path.Contains("[type eq"))
                     {
-                        user.EnterpriseExtension.EmployeeNumber = operation.Value.ToString();
-                    }
-
-                    if (string.Equals(operation.Path, departmentPropertyName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        user.EnterpriseExtension.Department = operation.Value.ToString();
-                    }
-
-                    if (string.Equals(operation.Path, managerPropertyName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        user.EnterpriseExtension.Manager.Value = operation.Value.ToString();
+                        await ParseComplexPath(operation.Path, operation.Value.ToString(), user);
                     }
 
                     if (property != null && property.CanWrite)
@@ -143,22 +169,10 @@ namespace ScimLibrary.Services
                 }
                 else if (operation.Op == "Remove" && operation.Path != null)
                 {
-
-                    if (string.Equals(operation.Path, employeeNumberPropertyName, StringComparison.OrdinalIgnoreCase))
+                    if (operation.Path.Contains("[type eq"))
                     {
-                        user.EnterpriseExtension.EmployeeNumber = null;
+                        await ParseComplexPath(operation.Path, null, user);
                     }
-
-                    if (string.Equals(operation.Path, departmentPropertyName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        user.EnterpriseExtension.Department = null;
-                    }
-
-                    if (string.Equals(operation.Path, managerPropertyName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        user.EnterpriseExtension.Manager = null;
-                    }
-
                     if (property != null && property.CanWrite)
                     {
                         property.SetValue(user, null);
