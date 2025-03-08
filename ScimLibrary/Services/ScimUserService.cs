@@ -1,8 +1,6 @@
 ﻿using ScimLibrary.Models;
 using System.Reflection;
 using ScimLibrary.BusinessModels;
-using Newtonsoft.Json;
-using System.Text.Json.Serialization;
 using ScimAPI.Repository;
 using ScimAPI.Utilities;
 using System.Text.RegularExpressions;
@@ -144,36 +142,32 @@ namespace ScimLibrary.Services
 
             foreach (var operation in patchOperations.Operations)
             {
+                if (string.IsNullOrEmpty(operation.Path)) continue;
+
                 if (operation.Path.Contains("urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"))
                 {
                     await ParseEnterpriseExtension(operation, user);
                     return true;
                 }
-                else if (operation.Path.Contains("[type eq"))
+
+                if (operation.Path.Contains("[type eq"))
                 {
+                    await ParseComplexPath(operation.Path, operation.Op == "Remove" ? null : operation.Value?.ToString(), user);
+                    continue;
                 }
 
-                var property = typeof(ScimUser).GetProperty(operation.Path, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                var property = typeof(ScimUser).GetProperty(
+                    operation.Path,
+                    BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance
+                );
 
-                if ((operation.Op == "Replace" || operation.Op == "Add") && operation.Path != null)
+                if (property != null && property.CanWrite)
                 {
-                    if (operation.Path.Contains("[type eq"))
+                    if (operation.Op == "Replace" || operation.Op == "Add")
                     {
-                        await ParseComplexPath(operation.Path, operation.Value.ToString(), user);
+                        property.SetValue(user, Convert.ChangeType(operation.Value, property.PropertyType));
                     }
-
-                    if (property != null && property.CanWrite)
-                    {
-                        property.SetValue(user, Convert.ChangeType(operation.Value.ToString(), property.PropertyType));
-                    }
-                }
-                else if (operation.Op == "Remove" && operation.Path != null)
-                {
-                    if (operation.Path.Contains("[type eq"))
-                    {
-                        await ParseComplexPath(operation.Path, null, user);
-                    }
-                    if (property != null && property.CanWrite)
+                    else if (operation.Op == "Remove")
                     {
                         property.SetValue(user, null);
                     }
