@@ -12,32 +12,32 @@ namespace ScimLibrary.Services
 {
     public class ScimUserService
     {
-        IScimRepository<ScimUser> repository;
-        public ScimUserService(IScimRepository<ScimUser> repository)
+        IScimUserRepository repository;
+        public ScimUserService(IScimUserRepository repository)
         {
             this.repository = repository;
         }
 
         public async Task<ScimUser> AddUser(ScimUser user)
         {
-            await repository.AddAsync(user);
+            await repository.AddUserAsync(user);
             user.Id = user.ExternalId;
             return user;
         }
 
         public void DeleteUser(ScimUser user)
         {
-            repository.DeleteAsync(user.ExternalId);
+            repository.DeleteUserAsync(user.ExternalId);
         }
 
         public async Task<ScimUser> GetUserById(string externalId)
         {
-            return await repository.GetByIdAsync(externalId);
+            return await repository.GetUserByIdAsync(externalId);
         }
 
         public async Task<ScimListResponse<ScimUser>> GetUserByFilter(string filter)
         {
-            var allUsers = await repository.GetAllAsync();
+            var allUsers = await repository.GetAllUsersAsync();
 
             var parsedFilter = ScimFilter.Parse(filter);
 
@@ -98,13 +98,13 @@ namespace ScimLibrary.Services
                     }
                 }
 
-                await repository.UpdateAsync(user);
+                await repository.UpdateUserAsync(user);
             }
         }
 
         public async Task<bool> PatchUserAsync(string userId, ScimPatchOperation patchOperations)
         {
-            var user = await repository.GetByIdAsync(userId);
+            var user = await repository.GetUserByIdAsync(userId);
             if (user == null) return false;
 
             // Special clause for enterprise extension. Using reflections on extensions with nested value, would
@@ -167,13 +167,13 @@ namespace ScimLibrary.Services
                 }
             }
 
-            await repository.UpdateAsync(user);
+            await repository.UpdateUserAsync(user);
             return true;
         }
 
         public void UpdateUser(ScimUser user)
         {
-            repository.UpdateAsync(user);
+            repository.UpdateUserAsync(user);
         }
     }
 }

@@ -9,31 +9,31 @@ namespace ScimLibrary.Services
 {
     public class ScimGroupService
     {
-        IScimRepository<ScimGroup> repository;
-        public ScimGroupService(IScimRepository<ScimGroup> repository)
+        IScimGroupRepository repository;
+        public ScimGroupService(IScimGroupRepository repository)
         {
             this.repository = repository;
         }
         public async Task<ScimGroup> AddGroup(ScimGroup group)
         {
-            await repository.AddAsync(group);
+            await repository.AddGroupAsync(group);
             group.Id = group.ExternalId;
             return group;
         }
 
         public void DeleteGroup(ScimGroup group)
         {
-            repository.DeleteAsync(group.ExternalId);
+            repository.DeleteGroupAsync(group.ExternalId);
         }
 
         public async Task<ScimGroup> GetGroupById(string externalId)
         {
-            return await repository.GetByIdAsync(externalId);
+            return await repository.GetGroupByIdAsync(externalId);
         }
 
         public async Task<ScimListResponse<ScimGroup>> GetGroupByFilter(string filter)
         {
-            var allGroups = await repository.GetAllAsync();
+            var allGroups = await repository.GetAllGroupsAsync();
             var parsedFilter = ScimFilter.Parse(filter);
             var predicate = parsedFilter.ToLambda<ScimGroup>();
             var matchedGroups = allGroups.Where(predicate).ToList();
@@ -43,7 +43,7 @@ namespace ScimLibrary.Services
 
         public async Task<bool> PatchGroupAsync(string groupId, ScimPatchOperation patchOperations)
         {
-            var group = await repository.GetByIdAsync(groupId);
+            var group = await repository.GetGroupByIdAsync(groupId);
             if (group == null) return false;
 
             foreach (var operation in patchOperations.Operations)
@@ -85,7 +85,7 @@ namespace ScimLibrary.Services
                 }
             }
 
-            await repository.UpdateAsync(group);
+            await repository.UpdateGroupAsync(group);
             return true;
         }
     }

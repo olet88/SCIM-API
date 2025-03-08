@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 
 namespace ScimAPI.Demo
 {
-    public class InMemoryRepository : IScimRepository<ScimUser>, IScimRepository<ScimGroup>
+    internal class InMemoryDatabaseRepository : IScimUserRepository, IScimGroupRepository
     {
         // Quick and dirty in-memory database and demo repository. DO NOT use in production -- or for any other purpose than learning how SCIM works.
 
@@ -12,18 +12,18 @@ namespace ScimAPI.Demo
         public static readonly ConcurrentDictionary<string, ScimGroup> InMemoryGroupDatabase = new ConcurrentDictionary<string, ScimGroup>();
 
 
-        public Task AddAsync(ScimUser entity)
+        public Task AddUserAsync(ScimUser entity)
         {
             InMemoryUserDatabase.TryAdd(entity.ExternalId, entity);
             return Task.CompletedTask;
         }
 
-        public Task<IEnumerable<ScimUser>> GetAllAsync()
+        public Task<IEnumerable<ScimUser>> GetAllUsersAsync()
         {
             return Task.FromResult<IEnumerable<ScimUser>>(InMemoryUserDatabase.Values.ToList());
         }
 
-        public Task<ScimUser> GetByIdAsync(string id)
+        public Task<ScimUser> GetUserByIdAsync(string id)
         {
             if (!InMemoryUserDatabase.ContainsKey(id))
             {
@@ -33,12 +33,12 @@ namespace ScimAPI.Demo
             return Task.FromResult(InMemoryUserDatabase[id]);
         }
 
-        public Task DeleteAsync(string id)
+        public Task DeleteUserAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task ReplaceAsync(ScimUser entity)
+        public Task ReplaceUserAsync(ScimUser entity)
         {
             if (InMemoryUserDatabase.ContainsKey(entity.ExternalId))
             {
@@ -52,7 +52,7 @@ namespace ScimAPI.Demo
         }
 
 
-        public Task UpdateAsync(ScimUser entity)
+        public Task UpdateUserAsync(ScimUser entity)
         {
             if (InMemoryUserDatabase.ContainsKey(entity.ExternalId))
             {
@@ -65,18 +65,18 @@ namespace ScimAPI.Demo
             }
         }
 
-        Task IScimRepository<ScimGroup>.AddAsync(ScimGroup entity)
+        public Task AddGroupAsync(ScimGroup entity)
         {
             InMemoryGroupDatabase.TryAdd(entity.ExternalId, entity);
             return Task.CompletedTask;
         }
 
-        Task<IEnumerable<ScimGroup>> IScimRepository<ScimGroup>.GetAllAsync()
+        public Task<IEnumerable<ScimGroup>> GetAllGroupsAsync()
         {
             return Task.FromResult<IEnumerable<ScimGroup>>(InMemoryGroupDatabase.Values.ToList());
         }
 
-        Task<ScimGroup> IScimRepository<ScimGroup>.GetByIdAsync(string id)
+        public Task<ScimGroup> GetGroupByIdAsync(string id)
         {
             if (!InMemoryGroupDatabase.ContainsKey(id))
             {
@@ -86,13 +86,13 @@ namespace ScimAPI.Demo
             return Task.FromResult(InMemoryGroupDatabase[id]);
         }
 
-        Task IScimRepository<ScimGroup>.DeleteAsync(string id)
+        public Task DeleteGroupAsync(string id)
         {
             InMemoryGroupDatabase.TryRemove(id, out _);
             return Task.CompletedTask;
         }
 
-        Task IScimRepository<ScimGroup>.ReplaceAsync(ScimGroup entity)
+        public Task ReplaceGroupAsync(ScimGroup entity)
         {
             if (InMemoryUserDatabase.ContainsKey(entity.ExternalId))
             {
@@ -105,8 +105,7 @@ namespace ScimAPI.Demo
             }
         }
 
-
-        Task IScimRepository<ScimGroup>.UpdateAsync(ScimGroup entity)
+        public Task UpdateGroupAsync(ScimGroup entity)
         {
             if (InMemoryGroupDatabase.ContainsKey(entity.ExternalId))
             {
@@ -117,6 +116,6 @@ namespace ScimAPI.Demo
             {
                 throw new KeyNotFoundException();
             }
-        }
+        } 
     }
 }

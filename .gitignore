@@ -2,4 +2,8 @@
 **/obj/
 ScimLibrary/bin/
 ScimLibrary/obj/
+ScimLibrary\bin\
+ScimLibrary\obj\
 *.vs
+**\bin\
+**\obj\
