@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Nodes;
-
-namespace ScimAPI.Utilities
+﻿namespace ScimAPI.Utilities
 {
     public class ScimPatchOperation
     {

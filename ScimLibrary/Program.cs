@@ -3,7 +3,8 @@ using ScimLibrary.Models;
 using ScimLibrary.Services;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using ScimLibrary.Factories;
-using ScimAPI.Repository; // Corrected namespace
+using ScimAPI.Repository;
+using ScimAPI.Demo; // Corrected namespace
 
 var builder = WebApplication.CreateBuilder(args);
 

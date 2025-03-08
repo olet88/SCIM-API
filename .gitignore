@@ -1,2 +1,5 @@
-bin/ 
-obj/ 
+**/bin/
+**/obj/
+ScimLibrary/bin/
+ScimLibrary/obj/
+*.vs
