@@ -4,7 +4,6 @@ using ScimAPI.Utilities;
 using ScimLibrary.BusinessModels;
 using ScimLibrary.Models;
 using System.Reflection;
-using System.Xml.Linq;
 
 namespace ScimLibrary.Services
 {

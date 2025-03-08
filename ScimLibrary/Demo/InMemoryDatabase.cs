@@ -88,7 +88,8 @@ namespace ScimAPI.Demo
 
         Task IScimRepository<ScimGroup>.DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            InMemoryGroupDatabase.TryRemove(id, out _);
+            return Task.CompletedTask;
         }
 
         Task IScimRepository<ScimGroup>.ReplaceAsync(ScimGroup entity)

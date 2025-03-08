@@ -135,7 +135,7 @@ namespace ScimLibrary.Controllers
             try
             {
                 var users = scimUserService.GetUserByFilter(filter);
-                return Ok(users);
+                return Ok(users.Result);
             }
             catch (KeyNotFoundException ex)
             {
