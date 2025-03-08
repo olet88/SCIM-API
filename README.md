@@ -1,5 +1,5 @@
 # SCIMClient
-An open-source implementation of a SCIM V2 client that is fully compatible with Entra ID. This library works with both users and groups. A Swagger front-end and a very simple demo repository class is included. It also works with the standard enterprise extensions in Entra ID. No authorization for the endpoints is included, and **you need to manually add this to use the library in production**. The reason for not simply including this, is that there are different ways to do this and that I hope to avoid major compatibility issues. For a detailed description of how the app works, **see the wiki**.
+An open-source implementation of a SCIM V2 client that is fully compatible with Entra ID. This library works with both users and groups. A Swagger front-end and a very simple demo app is included. The client also works with the standard enterprise extensions in Entra ID.  For a detailed description of how the app works, **see the wiki**.
 
 This software is 100% free without ifs or buts under the MIT license. [If you like it, feel free to buy me a coffee.](https://buymeacoffee.com/Tobiesen)
 
@@ -16,14 +16,15 @@ SCIM is used by Azure Entra ID, Slack, Dropbox, Octa and many others. This libra
 
 The library is a standard MVC pattern using a 3-tier layout. It employs services and a repository at the bottom. Domain models are handled directly from the service. While a repository isn't strictly necessary when using a document database, it will ensure that the library is not tight-coupled to any database system, but that it can work with anything. A good and free alternative is MongoDB.
 
-Modularity has taken precedence over speed in this project. 
+The API relies heavily on dependency injection. Modularity and ease of use has taken precedence over speed in this project.
+
 ## Testing it locally
 
-The library comes with a simple Swagger front-end. If you want to test it locally, you can also download NGrok. This will allow you to create a tunnel to your local service that Entra ID can use. [The documentation for this is fairly straightforward.](https://ngrok.com/docs/getting-started/)
+The demo client comes with a simple Swagger front-end. If you want to test it locally from Azure Entra ID in your web browser, you can also download NGrok. This will allow you to create a tunnel to your local service that Entra ID can use. [The documentation for this is fairly straightforward.](https://ngrok.com/docs/getting-started/)
 
 ![image](https://github.com/user-attachments/assets/a2f55159-df4b-4424-a1ad-7ea2541bd3a2)
 
-Entra ID by default uses the following verbs: **GET**, **POST** and **PATCH**. **DELETE** and **PUT** are not used; deleted or deactivated users and groups are handled using an "Active" flag instead. A delete endpoint is included in this API to allow you to hard delete an entry from a custom front-end, Swagger or Postman.
+Entra ID by default uses the following verbs: **GET**, **POST** and **PATCH** and **DELETE**. The latter is only used for groups, while the three first verbs are used for both users and groups. **PUT** is not used by Entra ID. Deleted or deactivated usersare handled using an "Active" flag and a PATCH request instead instead. A delete endpoint is included in this API to allow you to hard delete an entry from a custom front-end, Swagger or Postman.
 
 #### JSONs for testing various API calls can be found in the wiki for this project.
 
