@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScimAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a511f5d4ed02232903350befe1393585650ae4c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d177580e9619ed9c43a313ac3ab77da7d2c208d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScimAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScimAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

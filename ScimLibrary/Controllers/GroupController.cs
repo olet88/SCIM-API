@@ -130,7 +130,7 @@ namespace ScimLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllGroups([FromQuery] int? startIndex = 1, [FromQuery] int? count = 10, [FromQuery] string filter = null)
+        public IActionResult GetGroupByFilter([FromQuery] string filter, [FromQuery] int? startIndex = 1, [FromQuery] int? count = 10)
         {
             try
             {
@@ -141,11 +141,6 @@ namespace ScimLibrary.Controllers
             {
                 logger.LogWarning(ex, "Users not found.");
                 return NotFound(new { message = "Users not found." });
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                logger.LogWarning(ex, "Unauthorized access.");
-                return Forbid();
             }
             catch (ApplicationException ex)
             {
