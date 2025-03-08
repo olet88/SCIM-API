@@ -1,5 +1,7 @@
 **/bin/
 **/obj/
+ScimLibrary/bin/
+ScimLibrary/obj/
 **\bin\
 **\obj\
 *.vs
