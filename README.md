@@ -16,6 +16,7 @@ SCIM is used by Azure Entra ID, Slack, Dropbox, Octa and many others. This libra
 
 The library is a standard MVC pattern using a 3-tier layout. It employs services and a repository at the bottom. Domain models are handled directly from the service. While a repository isn't strictly necessary when using a document database, it will ensure that the library is not tight-coupled to any database system, but that it can work with anything. A good and free alternative is MongoDB.
 
+Modularity has taken precedence over speed in this project. 
 ## Testing it locally
 
 The library comes with a simple Swagger front-end. If you want to test it locally, you can also download NGrok. This will allow you to create a tunnel to your local service that Entra ID can use. [The documentation for this is fairly straightforward.](https://ngrok.com/docs/getting-started/)
