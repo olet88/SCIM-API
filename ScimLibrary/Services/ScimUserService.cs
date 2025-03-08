@@ -44,26 +44,23 @@ namespace ScimLibrary.Services
             var predicate = parsedFilter.ToLambda<ScimUser>();
             var matchedUsers = allUsers.Where(predicate).ToList();
 
-            return new ScimListResponse<ScimUser>() { Resources = matchedUsers};
+            return new ScimListResponse<ScimUser>() { Resources = matchedUsers };
         }
 
         async Task ParseComplexPath(string path, string value2, ScimUser user)
         {
             string pattern = @"(\w+)\[(\w+)\s*(\S+)\s*""([^""]+)""\](?:\.(\w+))?";
-            string toUpperCase = @"(?:^|[_\s-])([a-z])";
 
             Match match = Regex.Match(path, pattern);
             if (match.Success)
             {
                 string array = match.Groups[1].Value;
                 string field = match.Groups[2].Value;
-                string operatorType = match.Groups[3].Value;
-                string value = match.Groups[4].Value;
+                string type = match.Groups[4].Value;
                 string fieldToUpdate = match.Groups[5].Value;
 
                 field = Regex.Replace(field, @"(?:^|[_\s-])([a-z])", match => match.Groups[1].Value.ToUpper());
                 fieldToUpdate = Regex.Replace(fieldToUpdate, @"(?:^|[_\s-])([a-z])", match => match.Groups[1].Value.ToUpper());
-
 
                 var property = typeof(ScimUser).GetProperty(array, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
@@ -72,11 +69,11 @@ namespace ScimLibrary.Services
                     var collection = property.GetValue(user) as IList; // Get the list property
                     if (collection != null)
                     {
-                        Type itemType = property.PropertyType.GetGenericArguments()[0]; 
+                        Type itemType = property.PropertyType.GetGenericArguments()[0];
                         PropertyInfo typeProp = itemType.GetProperty(field); // convert these to pascal case
                         PropertyInfo valueProp = itemType.GetProperty(fieldToUpdate);
 
-                        bool exists = collection.Cast<object>().Any(item => typeProp.GetValue(item)?.Equals(value) == true);
+                        bool exists = collection.Cast<object>().Any(item => typeProp.GetValue(item)?.Equals(type) == true);
                         object patchedItem;
 
                         object newItem = Activator.CreateInstance(itemType);
@@ -84,17 +81,18 @@ namespace ScimLibrary.Services
                         if (!exists)
                         {
                             patchedItem = newItem;
-                        } else
+                        }
+                        else
                         {
-                            patchedItem = collection.Cast<object>().Where(item => typeProp.GetValue(item)?.Equals(value) == true).FirstOrDefault();
+                            patchedItem = collection.Cast<object>().Where(item => typeProp.GetValue(item)?.Equals(type) == true).FirstOrDefault();
                         }
 
-                        if (typeProp != null) typeProp.SetValue(patchedItem, value); // Set "type" field
-                        if (valueProp != null) 
-                            valueProp.SetValue(patchedItem, value2); // Set "value" field
+                        if (typeProp != null) typeProp.SetValue(patchedItem, type);
+                        if (valueProp != null)
+                            valueProp.SetValue(patchedItem, value2);
 
                         if (!exists)
-                            collection.Add(patchedItem); // Add to the list
+                            collection.Add(patchedItem);
                     }
                 }
 
@@ -117,15 +115,16 @@ namespace ScimLibrary.Services
 
             foreach (var operation in patchOperations.Operations)
             {
-                await ParseComplexPath(operation.Path,operation.Value.ToString(),user);
+                await ParseComplexPath(operation.Path, operation.Value.ToString(), user);
                 var property = typeof(ScimUser).GetProperty(operation.Path, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
                 if ((operation.Op == "Replace" || operation.Op == "Add") && operation.Path != null)
                 {
 
-                    if (string.Equals(operation.Path, employeeNumberPropertyName, StringComparison.OrdinalIgnoreCase)) {
+                    if (string.Equals(operation.Path, employeeNumberPropertyName, StringComparison.OrdinalIgnoreCase))
+                    {
                         user.EnterpriseExtension.EmployeeNumber = operation.Value.ToString();
-                     }
+                    }
 
                     if (string.Equals(operation.Path, departmentPropertyName, StringComparison.OrdinalIgnoreCase))
                     {

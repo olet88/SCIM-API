@@ -19,7 +19,7 @@ namespace ScimLibrary.Models
         };
 
         public string? Id { get; set; }
-        public string? ExternalId { get; set; }
+        public required string ExternalId { get; set; }
         public string? PreferredLanguage { get; set; }
         public bool Active { get; set; }
         public string? UserName { get; set; }
