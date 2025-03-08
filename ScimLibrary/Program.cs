@@ -21,8 +21,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Register the demo repository
-builder.Services.AddScoped<IScimUserRepository, InMemoryRepository>();
-builder.Services.AddScoped<IScimGroupRepository, InMemoryRepository>();
+builder.Services.AddScoped<IScimUserRepository, InMemoryDatabaseRepository>();
+builder.Services.AddScoped<IScimGroupRepository, InMemoryDatabaseRepository>();
 
 builder.Services.AddScoped<IScimErrorFactory, ScimErrorFactory>();
 

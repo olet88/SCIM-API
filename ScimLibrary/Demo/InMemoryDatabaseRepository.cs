@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 
 namespace ScimAPI.Demo
 {
-    internal class InMemoryRepository : IScimUserRepository, IScimGroupRepository
+    internal class InMemoryDatabaseRepository : IScimUserRepository, IScimGroupRepository
     {
         // Quick and dirty in-memory database and demo repository. DO NOT use in production -- or for any other purpose than learning how SCIM works.
 
