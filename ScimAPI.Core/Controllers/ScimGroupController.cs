@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ScimAPI.Utilities;
 using ScimLibrary.Factories;
@@ -7,6 +8,7 @@ using ScimLibrary.Services;
 
 namespace ScimLibrary.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("scim/v2/Groups")]
     public class ScimGroupController : ControllerBase
