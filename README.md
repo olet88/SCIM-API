@@ -26,5 +26,6 @@ The demo client comes with a simple Swagger front-end. If you want to test it lo
 
 Entra ID by default uses the following verbs: **GET**, **POST** and **PATCH** and **DELETE**. The latter is only used for groups, while the three first verbs are used for both users and groups. **PUT** is not used by Entra ID. Deleted or deactivated usersare handled using an "Active" flag and a PATCH request instead instead. A delete endpoint is included in this API to allow you to hard delete an entry from a custom front-end, Swagger or Postman.
 
-#### JSONs for testing various API calls can be found in the wiki for this project.
+#### JSONs for testing various API calls can (soon) be found in the wiki for this project.
 
+(c) Ole Tobiesen
