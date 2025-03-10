@@ -7,3 +7,4 @@ ScimLibrary\obj\
 *.vs
 **\bin\
 **\obj\
+/ScimAPI.Core/ClassDiagram1.cd
